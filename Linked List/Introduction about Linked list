@@ -1,1 +1,55 @@
+LINKED LIST:
+
+ - Linked list is a linear data structure.
+ - Elements with different data types can be stroed in a single list.
+ - Linked list consists of node where each node contains data field and reference to the next node.
+ 
+ Example:
+ 
+ class LinkedList {
+    Node head; // head of list
+    static class Node {
+        int data;
+        Node next;
+        Node(int d)
+        {
+            this.data = d;
+            next = null;
+        } 
+    }
+ 
+   // Printing the list
+    public void printList()
+    {
+        Node n = head;
+        while (n != null) {
+            System.out.print(n.data + " ");
+            n = n.next;
+        }
+    }
+ 
+    public static void main(String[] args)
+    {
+        // creating linked list
+        LinkedList llist = new LinkedList();
+ 
+        llist.head = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+ 
+        llist.head.next = second; // Link first node with the second node
+        second.next = third; // Link second node with the third node
+ 
+        llist.printList();
+    }
+}
+
+OUTPUT:
+1 2 3
+
+Types of Linked list:
+
+i)   Singly linked list
+ii)  Doubly linked list
+iii) Circular linked list
 
