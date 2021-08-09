@@ -1,1 +1,17 @@
+DATA STRUCTURE:
+ - Data structures are the programmetic way of storing and organizing data in efficient manner.
 
+Data structures can be classified into two:
+   
+   i)  Linear Data Structure
+      - Elements arranged in sequential manner.
+      - Easy to traverse.
+      - Array, Linked list, Stack, Queue are linear data structures.
+      - Elements are arranged in single level.
+
+   ii) Non-Linear Data Structure
+      - Elements are not arranged in sequential manner.
+      - Traversing takes time compared to linear data structure.
+      - Tree, Graphs are Non-linear data structures.
+      - Elements are arranged in Multi level.
+      
