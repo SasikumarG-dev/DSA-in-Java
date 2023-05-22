@@ -1,0 +1,159 @@
+Subtract Two Numbers Represented By Linked List:
+
+
+Given two linked lists that represent two large positive numbers. Subtract the smaller number from the larger one and return the difference as a linked list. Note that the input lists may be in any order, but we always need to subtract smaller ones from larger ones.
+Note: It may be assumed that there are no extra leading zeros in input lists.
+
+Examples: 
+
+Input: l1 = 1 -> 0 -> 0 -> NULL,  l2 = 1 -> NULL
+Output: 0->9->9->NULL
+Explanation: Number represented as 
+lists are 100 and 1, so 100 - 1 is 099
+
+Input: l1 = 7-> 8 -> 6 -> NULL,  l2 = 7 -> 8 -> 9 NULL
+Output: 3->NULL
+Explanation: Number represented as 
+lists are 786 and  789, so 789 - 786 is 3, 
+as the smaller value is subtracted from 
+the larger one.
+
+
+
+
+SOLUTION IN JAVA:
+
+
+package singlyLinkedList;
+
+
+public class SubtractTwoNumbers {
+private Node head1,head2;
+	
+	private class Node{
+		int val;
+		Node next;
+		
+		public Node(int val) {
+			this.val=val;
+		}
+	}
+	
+	public Node insert(Node head,int val) {
+		Node node=new Node(val);
+		if(head==null) {
+			head=node;
+			head.next=null;
+		}
+		Node temp=head;
+		while(temp.next!=null) {
+			temp=temp.next;
+		}
+		temp.next=node;
+		node.next=null;
+		
+		return head;
+	}
+	
+	public void insertList1(int val) {
+		head1=insert(head1,val);
+	}
+	
+	public void insertList2(int val) {
+		head2=insert(head2,val);
+	}
+	
+	public void print(Node head) {
+		Node node=head;
+		if(node==null) {
+			System.out.println("null");
+			return;
+		}
+		while(node!=null) {
+			System.out.print(node.val+"->");
+			node=node.next;
+		}
+		System.out.println("end");
+	}
+	
+	public Node reverse(Node head) {
+		Node curr=head;
+		Node prev=null;
+		Node next=null;
+		while(curr!=null) {
+			next=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=next;
+		}
+		
+		return prev;
+	}
+	
+	public void subtract() {
+		int num1=0,num2=0;
+		Node dummy=new Node(0);
+		Node node=dummy.next;
+		while(head1!=null) {
+			num1=num1*10+head1.val;
+			head1=head1.next;
+		}
+		while(head2!=null) {
+			num2=num2*10+head2.val;
+			head2=head2.next;
+		}
+		int sub=Math.abs(num2-num1);
+		
+		dummy=dummy.next;
+		while(sub>0) {
+			Node node1=new Node(sub%10);
+			if(dummy==null) {
+				dummy=node1;
+				dummy.next=null;
+			}
+			Node temp=dummy;
+			while(temp.next!=null) {
+				temp=temp.next;
+			}
+			temp.next=node1;
+			node1.next=null;
+			sub/=10;
+		}
+		
+		dummy=reverse(dummy);
+		print(dummy);
+	}
+	
+	public void printNode1() {
+		
+		print(head1);
+	}
+	public void printNode2() {
+		print(head2);
+	}
+
+}
+
+
+package singlyLinkedList;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		
+		SubtractTwoNumbers list=new SubtractTwoNumbers();
+		list.insertList1(7);
+		list.insertList1(8);
+		list.insertList1(6);
+		
+		list.insertList2(7);
+		list.insertList2(8);
+		list.insertList2(9);
+		
+		list.subtract();
+		
+	}
+
+}
+
