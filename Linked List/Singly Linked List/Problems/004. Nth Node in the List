@@ -1,0 +1,83 @@
+Write a GetNth() function that takes a linked list and an integer index and returns the data value stored in the node at that index position. 
+
+Example: 
+
+Input:  1->10->30->14,  index = 2
+Output: 30  
+The node at index 2 is 30
+
+
+SOLUTION IN JAVA:
+
+
+package singlyLinkedList;
+
+import singlyLinkedList.MiddleNode.Node;
+
+public class NthNodeInList {
+	
+	Node head;
+	class Node{
+		int val;
+		Node next;
+		
+		public Node(int val) {
+			this.val=val;
+		}
+		
+		public Node(int val,Node next) {
+			this.val=val;
+			this.next=next;
+		}
+	}
+	public Node insert(int val) {
+		Node node=new Node(val);
+		if(head==null) {
+			head=node;
+			head.next=null;
+		}
+		Node temp=head;
+		while(temp.next!=null) {
+			temp=temp.next;
+		}
+		temp.next=node;
+		node.next=null;
+		
+		return head;
+		
+	}
+	
+	public int nthNode(int n) {
+		
+		while(head!=null) {
+			if(n==0) {
+				return head.val;
+			}
+			head=head.next;
+			n--;
+		}
+		return -1;
+	}
+}
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		NthNodeInList list=new NthNodeInList();
+		list.insert(0);
+		list.insert(1);
+		list.insert(2);
+		list.insert(3);
+		list.insert(4);
+		
+		System.out.println(list.nthNode(3));
+		
+	}
+
+}
+
+
+OUTPUT: 3
