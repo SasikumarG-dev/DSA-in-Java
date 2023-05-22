@@ -1,0 +1,39 @@
+Given a Linked List and a number N, write a function that returns the value at the Nth node from the end of the Linked List.
+
+
+Linked-List
+
+Examples:
+
+Input: 1 -> 2 -> 3 -> 4, N = 3
+Output: 2
+
+Input: 35 -> 15 -> 4 -> 20, N = 4
+Output: 35   
+
+
+SOLUTION IN JAVA:
+
+class GfG
+{
+    //Function to find the data of nth node from the end of a linked list.
+    int getNthFromLast(Node head, int n)
+    {
+    	// Your code here	
+    	Node node=head;
+    	Node fast=head;
+    	int len=0;
+    	while(node!=null){
+    	    node=node.next;
+    	    len++;
+    	}
+    	if(len<n){
+    	    return -1;
+    	}
+    	for(int i=0;i<len-n;i++){
+    	    fast=fast.next;
+    	}
+    	
+    	return fast.data;
+    }
+}
