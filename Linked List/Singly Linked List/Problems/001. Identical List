@@ -102,8 +102,6 @@ public class IdenticalList {
 }
 
 
-package singlyLinkedList;
-
 public class Main {
 
 	public static void main(String[] args) {
